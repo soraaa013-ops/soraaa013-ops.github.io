@@ -1,1 +1,25 @@
-./public
+# 忽略Hugo生成的文件
+/public/         # 构建输出的静态网站文件
+/resources/      # Hugo缓存文件
+
+# 忽略操作系统生成的文件
+.DS_Store        # macOS系统文件
+Thumbs.db        # Windows缩略图文件
+ehthumbs.db      # Windows缩略图数据库
+
+# 忽略IDE和编辑器文件
+.vscode/         # VS Code配置
+.idea/           # IntelliJ IDEA配置
+*.swp            # Vim交换文件
+*.swo            # Vim交换文件
+
+# 忽略环境相关文件
+.env             # 环境变量文件
+.env.local       # 本地环境变量
+
+# 忽略日志文件
+*.log            # 所有日志文件
+
+# 忽略依赖目录（如果使用包管理器）
+node_modules/    # Node.js依赖
+/__pycache__/    # Python缓存
