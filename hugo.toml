@@ -1,5 +1,5 @@
 baseURL = 'https://soraaa013-ops.github.io/'
 title = '智能计算实验室'
-theme = 'ananke'
+theme = 'academic'
 [outputs]
   home = ["HTML"]  # 只生成HTML，不生成RSS
