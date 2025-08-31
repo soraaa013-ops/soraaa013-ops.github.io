@@ -4,18 +4,23 @@ on:
   push:
     branches: [ main ]
 
-# 添加必要的权限
 permissions:
-  contents: write  # 重要：允许工作流写入内容（创建分支）
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: recursive  # 重要：用于拉取主题
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -27,12 +32,21 @@ jobs:
       - name: Build with Hugo
         run: hugo --minify
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用自动生成的token
-          publish_branch: gh-pages  # 明确指定分支名称
-          publish_dir: ./public
-          force_orphan: true  # 确保分支历史整洁
-          enable_jekyll: false  # 可选：禁用Jekyll处理
-          
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
