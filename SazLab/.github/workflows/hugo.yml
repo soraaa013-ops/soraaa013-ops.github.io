@@ -21,11 +21,11 @@ jobs:
           extended: true
 
       - name: Build with Hugo
-        run: hugo --minify
+        run: hugo --minify --destination docs  # ⚠️ 关键修改：输出到docs文件夹
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # 创建并推送到gh-pages分支
-          publish_dir: ./public
+          publish_dir: ./docs  # ⚠️ 关键修改：发布docs文件夹
+          # 注释掉或删除 publish_branch 配置
