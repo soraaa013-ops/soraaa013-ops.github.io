@@ -34,5 +34,5 @@ jobs:
           publish_branch: gh-pages  # 明确指定分支名称
           publish_dir: ./public
           force_orphan: true  # 确保分支历史整洁
-          # enable_jekyll: false  # 可选：禁用Jekyll处理
+          enable_jekyll: false  # 可选：禁用Jekyll处理
           
