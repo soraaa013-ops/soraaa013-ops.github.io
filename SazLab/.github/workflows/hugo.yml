@@ -28,4 +28,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs  # ⚠️ 关键修改：发布docs文件夹
-          # 注释掉或删除 publish_branch 配置
