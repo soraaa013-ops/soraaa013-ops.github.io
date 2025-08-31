@@ -4,6 +4,10 @@ on:
   push:
     branches: [ main ]
 
+# 添加必要的权限
+permissions:
+  contents: write  # 重要：允许工作流写入内容（创建分支）
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -11,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: recursive  # 重要：确保拉取子模块（主题）
+          submodules: recursive
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -21,18 +25,13 @@ jobs:
           extended: true
 
       - name: Build with Hugo
-        run: |
-          hugo --minify  # 构建网站，静态文件默认输出到 public 目录
-          # 可选：如果你之前创建过 .nojekyll 文件，确保它被复制到 public 目录以禁用 Jekyll 处理
-          cp .nojekyll public/ 2>/dev/null || true
+        run: hugo --minify
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # 明确指定部署到 gh-pages 分支:cite[1]:cite[5]:cite[10]
-          publish_dir: ./public     # 发布 Hugo 生成的 public 目录内容
-          # 你也可以使用以下参数强制禁用 Jekyll（与 cp .nojekyll public/ 效果类似）
-          enable_jekyll: false
-          # 保持提交历史整洁（可选）
-          # force_orphan: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用自动生成的token
+          publish_branch: gh-pages  # 明确指定分支名称
+          publish_dir: ./public
+          force_orphan: true  # 确保分支历史整洁
+          # enable_jekyll: false  # 可选：禁用Jekyll处理
