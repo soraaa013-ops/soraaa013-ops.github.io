@@ -1,0 +1,211 @@
+:root {
+  --bg: #0b0d12;
+  --bg-soft: #12151d;
+  --card: #171b26;
+  --border: #232838;
+  --text: #e6e9f0;
+  --text-dim: #9aa3b8;
+  --accent: #6c8cff;
+  --accent-2: #b06cff;
+  --radius: 16px;
+  --maxw: 960px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.bg-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(600px 400px at 15% 10%, rgba(108, 140, 255, 0.18), transparent 60%),
+    radial-gradient(500px 380px at 85% 30%, rgba(176, 108, 255, 0.15), transparent 60%),
+    radial-gradient(700px 500px at 50% 100%, rgba(96, 255, 210, 0.07), transparent 60%);
+  pointer-events: none;
+}
+
+.nav {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.nav nav { display: flex; gap: 24px; }
+
+.nav nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav nav a:hover { color: var(--text); }
+
+main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+.hero { padding: 80px 0 96px; }
+
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin-top: 20px;
+  max-width: 560px;
+  color: var(--text-dim);
+  font-size: 1.1rem;
+}
+
+.cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(108, 140, 255, 0.35);
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 38px rgba(108, 140, 255, 0.5);
+}
+
+.btn.ghost {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn.ghost:hover { background: var(--bg-soft); }
+
+.section { padding: 48px 0; }
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.card p { color: var(--text-dim); }
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.tags li {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.project {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.project-icon { font-size: 1.8rem; margin-bottom: 12px; }
+
+.project h3 { margin-bottom: 8px; font-size: 1.1rem; }
+
+.project p { color: var(--text-dim); font-size: 0.92rem; }
+
+.project-links { margin-top: 16px; }
+
+.project-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.contact-card { text-align: center; }
+
+.contact-card .btn { margin-top: 20px; }
+
+footer {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 48px 24px 56px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .nav nav { gap: 16px; }
+  .nav nav a { font-size: 0.88rem; }
+  .hero { padding: 48px 0 64px; }
+}
