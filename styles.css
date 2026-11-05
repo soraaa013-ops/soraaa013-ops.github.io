@@ -331,8 +331,11 @@ h1 {
 .hero-art img {
   position: relative;
   width: 100%;
-  max-width: 330px;
-  height: auto;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.12);
   filter: drop-shadow(0 20px 44px rgba(255, 111, 181, 0.4))
           drop-shadow(0 0 26px rgba(110, 231, 255, 0.22));
   animation: bob 5.5s ease-in-out infinite;
