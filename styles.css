@@ -496,6 +496,19 @@ h2 {
 
 .project p { color: var(--text-dim); font-size: 0.93rem; }
 
+/* ---------- linked tool card ---------- */
+#tools .grid { grid-template-columns: minmax(260px, 460px); }
+
+a.project { text-decoration: none; color: inherit; display: block; }
+
+a.project .btn { margin-top: 16px; }
+
+a.project:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
 /* ---------- music corner ---------- */
 .music-card {
   display: grid;

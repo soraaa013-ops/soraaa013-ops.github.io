@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>节拍器 · Sora</title>
+  <meta name="description" content="一个好用、精确、好看的在线节拍器 — 支持变速、拍号、细分、重音、打拍定速" />
+  <meta name="theme-color" content="#07050d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎚️</text></svg>" />
+</head>
+<body>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="btn ghost back" href="../">← 返回主页</a>
+    <span class="brand"><span class="logo-mark">✦</span>节拍器 · METRONOME</span>
+  </header>
+
+  <main>
+    <section class="stage card spotlight reveal">
+      <p class="eyebrow tempo-mark"><span class="pulse"></span><span id="tempoMark">Moderato · 中板</span></p>
+
+      <div class="bpm-row">
+        <button class="step" id="minusBtn" type="button" aria-label="速度减一">−</button>
+        <div class="bpm-display">
+          <input class="bpm-input" id="bpmInput" type="text" inputmode="numeric" role="spinbutton"
+                 aria-label="速度 BPM" aria-valuemin="30" aria-valuemax="300" value="120" />
+          <span class="bpm-unit">BPM</span>
+        </div>
+        <button class="step" id="plusBtn" type="button" aria-label="速度加一">+</button>
+      </div>
+
+      <input class="bpm-slider" id="bpmSlider" type="range" min="30" max="300" step="1" value="120" aria-label="速度滑块" />
+
+      <div class="pendulum" id="pendulum" aria-hidden="true">
+        <div class="pendulum-arm" id="pendulumArm">
+          <span class="pendulum-bob"></span>
+        </div>
+        <span class="pendulum-pivot"></span>
+      </div>
+
+      <div class="beats" id="beats" aria-hidden="true"></div>
+
+      <div class="transport">
+        <button class="play" id="playBtn" type="button" aria-label="开始" aria-pressed="false">
+          <span class="play-icon" id="playIcon" aria-hidden="true"></span>
+        </button>
+        <button class="tap" id="tapBtn" type="button" aria-label="打拍定速">
+          <span>TAP</span><small>打拍定速</small>
+        </button>
+      </div>
+    </section>
+
+    <div class="controls">
+      <section class="card ctrl reveal">
+        <h3>拍号 <span class="ctrl-sub">每小节拍数</span></h3>
+        <div class="seg" id="beatSeg" role="radiogroup" aria-label="每小节拍数"></div>
+        <div class="compound" id="compoundRow" role="radiogroup" aria-label="复合拍预设">
+          <button class="chip" type="button" data-compound="6" role="radio" aria-checked="false">6/8</button>
+          <button class="chip" type="button" data-compound="9" role="radio" aria-checked="false">9/8</button>
+          <button class="chip" type="button" data-compound="12" role="radio" aria-checked="false">12/8</button>
+        </div>
+      </section>
+
+      <section class="card ctrl reveal">
+        <h3>细分 <span class="ctrl-sub">每拍几下</span></h3>
+        <div class="seg" id="subdivSeg" role="radiogroup" aria-label="细分"></div>
+      </section>
+
+      <section class="card ctrl reveal">
+        <h3>音色 <span class="ctrl-sub">合成音源</span></h3>
+        <div class="seg" id="timbreSeg" role="radiogroup" aria-label="音色"></div>
+        <div class="row toggle-row">
+          <span>第一拍重音</span>
+          <button class="switch" id="accentSwitch" type="button" role="switch" aria-checked="true" aria-label="重音开关"><i></i></button>
+        </div>
+        <div class="row">
+          <span>音量</span>
+          <input class="vol-slider" id="volSlider" type="range" min="0" max="100" step="1" value="80" aria-label="音量" />
+        </div>
+      </section>
+
+      <section class="card ctrl reveal">
+        <h3>快捷键</h3>
+        <ul class="keys">
+          <li><kbd>空格</kbd> 开始 / 停止</li>
+          <li><kbd>↑</kbd><kbd>↓</kbd> 速度 ±1 <small>（按住 Shift ±10）</small></li>
+          <li><kbd>T</kbd> 打拍定速</li>
+          <li><kbd>M</kbd> 静音开关</li>
+          <li><kbd>1</kbd>–<kbd>9</kbd> 快速设拍数</li>
+        </ul>
+      </section>
+    </div>
+
+    <p class="hint">提示：先点一下「播放」或「TAP」以启用声音（浏览器要求先有交互）。</p>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Sora · Metronome · <a href="../">返回主页</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
