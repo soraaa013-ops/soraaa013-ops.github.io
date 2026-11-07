@@ -23,6 +23,18 @@ const TIMBRES = [
   { key: "wood", label: "木鱼" },
 ];
 
+// common time signatures → beats per measure
+const SIG_PRESETS = [
+  { label: "4/4", beats: 4 },
+  { label: "3/4", beats: 3 },
+  { label: "2/4", beats: 2 },
+  { label: "6/8", beats: 6 },
+  { label: "2/2", beats: 2 },
+  { label: "5/4", beats: 5 },
+];
+
+const SWING_DEG = 17;   // rod amplitude (degrees from center)
+
 // [maxBPM, name, cn] — first match wins
 const TEMPO_MARKS = [
   [60, "Largo", "广板"],
@@ -44,13 +56,22 @@ const state = {
   volume: 0.8,
   muted: false,
   running: false,
-  compound: null,       // "6" | "9" | "12" | null
+  sig: "4/4",           // active preset label, or "custom"
   nextNoteTime: 0,      // AudioContext-time anchor (seconds)
   currentNote: 0,       // monotonic subdivision counter
 };
 
 const notesInQueue = [];
-let lastBeatTime = 0;   // audio time of the most recent scheduled beat (for pendulum)
+let swingAnchor = 0;      // audio time of a beat tick — rod phase reference
+let swingAnchorPhase = 0; // 0 or 1 — which extreme the rod hits at the anchor
+
+function subdivPerBeat() {
+  return SUBDIVISIONS.find((s) => s.key === state.subdivKey).perBeat;
+}
+
+function isCompound() {
+  return state.beatsPerMeasure % 3 === 0 && state.beatsPerMeasure > 3;
+}
 
 /* ---------- dom ---------- */
 const $ = (id) => document.getElementById(id);
@@ -61,23 +82,20 @@ const el = {
   plus: $("plusBtn"),
   bpmInput: $("bpmInput"),
   bpmSlider: $("bpmSlider"),
-  pendulum: $("pendulum"),
-  pendulumArm: $("pendulumArm"),
+  mRod: $("mRod"),
+  mWeight: $("mWeight"),
   beats: $("beats"),
   play: $("playBtn"),
-  playIcon: $("playIcon"),
   tap: $("tapBtn"),
-  beatSeg: $("beatSeg"),
-  compoundRow: $("compoundRow"),
+  sigSeg: $("sigSeg"),
+  custMinus: $("custMinus"),
+  custPlus: $("custPlus"),
+  custVal: $("custVal"),
   subdivSeg: $("subdivSeg"),
   timbreSeg: $("timbreSeg"),
   accentSwitch: $("accentSwitch"),
   volSlider: $("volSlider"),
 };
-
-function subdivPerBeat() {
-  return SUBDIVISIONS.find((s) => s.key === state.subdivKey).perBeat;
-}
 
 /* ---------- audio ---------- */
 let ctx = null;
@@ -120,23 +138,26 @@ function getNoiseBuffer() {
   return noiseBuffer;
 }
 
-// A single click voice. `accent` = downbeat, `soft` = subdivision offbeat.
-function playClick(time, accent, soft) {
+// A single click voice. kind: "accent" (downbeat) · "sub" (compound 2nd accent) ·
+// "normal" (plain beat) · "soft" (subdivision offbeat).
+function playClick(time, kind) {
   const timbre = state.timbre;
   const out = ctx.createGain();
   out.connect(master);
+  const isAccent = kind === "accent";
+  const isSub = kind === "sub";
 
   if (timbre === "wood") {
     const src = ctx.createBufferSource();
     src.buffer = getNoiseBuffer();
     const bp = ctx.createBiquadFilter();
     bp.type = "bandpass";
-    bp.frequency.value = accent ? 2400 : 1800;
+    bp.frequency.value = isAccent ? 2400 : isSub ? 2100 : 1800;
     bp.Q.value = 9;
-    const peak = (accent ? 0.85 : soft ? 0.28 : 0.5);
+    const peak = isAccent ? 0.85 : isSub ? 0.62 : kind === "soft" ? 0.28 : 0.5;
     out.gain.setValueAtTime(0.0001, time);
     out.gain.linearRampToValueAtTime(peak, time + 0.001);
-    out.gain.exponentialRampToValueAtTime(0.0001, time + (accent ? 0.05 : 0.035));
+    out.gain.exponentialRampToValueAtTime(0.0001, time + (isAccent ? 0.05 : 0.035));
     src.connect(bp).connect(out);
     src.start(time);
     src.stop(time + 0.08);
@@ -144,10 +165,11 @@ function playClick(time, accent, soft) {
   }
 
   const isBeep = timbre === "beep";
-  const freq = isBeep
-    ? (accent ? 1568 : 1175)
-    : (accent ? 1000 : 800);
-  const peak = accent ? 0.9 : soft ? 0.3 : 0.55;
+  let freq;
+  if (isAccent) freq = isBeep ? 1568 : 1000;
+  else if (isSub) freq = isBeep ? 1318 : 900;
+  else freq = isBeep ? 1175 : 800;
+  const peak = isAccent ? 0.9 : isSub ? 0.66 : kind === "soft" ? 0.3 : 0.55;
   const decay = isBeep ? 0.07 : 0.045;
 
   const osc = ctx.createOscillator();
@@ -187,16 +209,21 @@ function createTimer(cb) {
 
 const scheduler = (() => {
   function tick() {
-    const spb = 60 / state.bpm / subdivPerBeat();
+    const per = subdivPerBeat();
+    const spb = 60 / state.bpm / per;
     while (state.nextNoteTime < ctx.currentTime + CONFIG.scheduleAhead) {
       if (state.nextNoteTime < ctx.currentTime) state.nextNoteTime = ctx.currentTime + 0.05;
-      const sub = state.currentNote % subdivPerBeat();
-      const beat = Math.floor(state.currentNote / subdivPerBeat()) % state.beatsPerMeasure;
+      const sub = state.currentNote % per;
+      const beatIndex = Math.floor(state.currentNote / per);
+      const beat = beatIndex % state.beatsPerMeasure;
       const accent = state.accent && beat === 0 && sub === 0;
-      const soft = sub !== 0;
-      playClick(state.nextNoteTime, accent, soft);
-      notesInQueue.push({ beat, accent, time: state.nextNoteTime });
-      lastBeatTime = state.nextNoteTime;
+      const subAccent = state.accent && isCompound() && sub === 0 && beat % 3 === 0 && beat !== 0;
+      playClick(state.nextNoteTime, accent ? "accent" : subAccent ? "sub" : sub !== 0 ? "soft" : "normal");
+      if (sub === 0) {
+        notesInQueue.push({ beat, accent, subAccent, time: state.nextNoteTime });
+        swingAnchor = state.nextNoteTime;
+        swingAnchorPhase = beatIndex % 2;
+      }
       state.nextNoteTime += spb;
       state.currentNote++;
     }
@@ -209,12 +236,13 @@ function start() {
   resumeAudio();
   state.currentNote = 0;
   notesInQueue.length = 0;
-  lastBeatTime = ctx.currentTime;
+  swingAnchor = ctx.currentTime + 0.06;
+  swingAnchorPhase = 0;
   state.nextNoteTime = ctx.currentTime + 0.06;
   state.running = true;
   scheduler.start();
   setPlayUI(true);
-  if (!REDUCED) requestAnimationFrame(rafLoop);
+  rafLoop();
 }
 
 function stop() {
@@ -232,23 +260,23 @@ function toggle() {
 /* ---------- visuals ---------- */
 function renderDots() {
   el.beats.innerHTML = "";
-  for (let i = 0; i < state.beatsPerMeasure; i++) {
+  const n = state.beatsPerMeasure;
+  const compound = n % 3 === 0 && n > 3;
+  for (let i = 0; i < n; i++) {
     const d = document.createElement("span");
-    d.className = "beat-dot" + (i === 0 ? " accent" : "");
+    let cls = "beat-dot";
+    if (i === 0) cls += " accent";
+    else if (compound && i % 3 === 0) cls += " sub";
+    d.className = cls;
     el.beats.appendChild(d);
   }
 }
 
-let beatCursor = 0; // index of the beat most recently lit
-let swingDir = -1;  // pendulum direction, flips each beat for a natural back-and-forth
-
 function flashBeat(note) {
-  swingDir = -swingDir;
   const dots = el.beats.children;
   if (!dots.length) return;
   for (const d of dots) d.classList.remove("active");
-  beatCursor = note.beat % dots.length;
-  dots[beatCursor].classList.add("active");
+  dots[note.beat % dots.length].classList.add("active");
 }
 
 function clearBeatHighlight() {
@@ -263,12 +291,13 @@ function rafLoop() {
     flashBeat(notesInQueue.shift());
   }
 
-  if (!REDUCED && el.pendulumArm) {
-    const dur = 60 / state.bpm;
-    const phase = Math.min(Math.max((now - lastBeatTime) / dur, 0), 1);
-    // sweep −32..32, alternate direction each beat so it rocks back and forth
-    const deg = swingDir < 0 ? -32 + phase * 64 : 32 - phase * 64;
-    el.pendulumArm.style.transform = `rotate(${deg.toFixed(2)}deg)`;
+  if (!REDUCED) {
+    // rod phase is derived from the audio clock: the cosine extremes land exactly
+    // on each beat, so the rod stays in sync with the sound with zero drift.
+    let phase = swingAnchorPhase + (now - swingAnchor) * (state.bpm / 60);
+    phase -= 2 * Math.floor(phase / 2);
+    const deg = SWING_DEG * Math.cos(Math.PI * phase);
+    el.mRod.style.transform = `rotate(${deg.toFixed(2)}deg)`;
   }
 
   requestAnimationFrame(rafLoop);
@@ -299,6 +328,15 @@ function setBPM(v) {
   if (!Number.isFinite(n)) return;
   state.bpm = Math.min(CONFIG.maxBPM, Math.max(CONFIG.minBPM, n));
   syncTempoUI();
+  updateWeight();
+}
+
+// the sliding weight rides high for slow tempi, low for fast — like a real metronome
+// (a real metronome: weight higher = longer pendulum = slower)
+function updateWeight() {
+  if (!el.mWeight) return;
+  const t = (state.bpm - CONFIG.minBPM) / (CONFIG.maxBPM - CONFIG.minBPM);
+  el.mWeight.style.top = `${(24 + t * 72).toFixed(1)}px`;
 }
 
 /* ---------- control building ---------- */
@@ -321,12 +359,32 @@ function buildSeg(container, items, isActive, onPick) {
   };
 }
 
-function refreshCompounds() {
-  for (const c of el.compoundRow.children) {
-    const on = state.compound === c.dataset.compound;
-    c.classList.toggle("active", on);
-    c.setAttribute("aria-checked", String(on));
+let refreshSubdiv = () => {}; // assigned during boot; referenced by applySig
+
+function refreshSig() {
+  for (const b of el.sigSeg.children) {
+    const on = state.sig === b.dataset.key;
+    b.classList.toggle("active", on);
+    b.setAttribute("aria-checked", String(on));
   }
+  el.custVal.textContent = String(state.beatsPerMeasure);
+}
+
+// pick a signature preset (also resets to its natural subdivision feel)
+function applySig(label, beats, subdivKey) {
+  state.sig = label;
+  state.beatsPerMeasure = beats;
+  if (subdivKey) state.subdivKey = subdivKey;
+  renderDots();
+  refreshSig();
+  if (subdivKey) refreshSubdiv();
+}
+
+function setCustomBeats(n) {
+  state.sig = "custom";
+  state.beatsPerMeasure = Math.min(16, Math.max(1, n));
+  renderDots();
+  refreshSig();
 }
 
 /* ---------- tap tempo ---------- */
@@ -352,42 +410,25 @@ function tapTempo() {
 document.addEventListener("DOMContentLoaded", () => {
   el.year.textContent = new Date().getFullYear();
 
-  // beats per measure 1..12
-  const beatItems = Array.from({ length: 12 }, (_, i) => ({ key: String(i + 1), name: String(i + 1) }));
-  const refreshBeats = buildSeg(el.beatSeg, beatItems,
-    (k) => String(state.beatsPerMeasure) === k && !state.compound,
-    (item) => {
-      state.compound = null;
-      state.beatsPerMeasure = Number(item.key);
-      renderDots();
-      refreshBeats();
-      refreshCompounds();
-    });
-
-  // subdivisions
-  const refreshSubdiv = buildSeg(el.subdivSeg,
+  refreshSubdiv = buildSeg(el.subdivSeg,
     SUBDIVISIONS.map((s) => ({ key: s.key, html: `${s.label} <small>${s.name}</small>` })),
     (k) => state.subdivKey === k,
     (item) => { state.subdivKey = item.key; refreshSubdiv(); });
+
+  buildSeg(el.sigSeg,
+    SIG_PRESETS.map((p) => ({ key: p.label, name: p.label, beats: p.beats })),
+    (k) => state.sig === k,
+    (p) => applySig(p.key, p.beats));
+
+  // custom beats stepper
+  el.custMinus.addEventListener("click", () => setCustomBeats(state.beatsPerMeasure - 1));
+  el.custPlus.addEventListener("click", () => setCustomBeats(state.beatsPerMeasure + 1));
 
   // timbres
   const refreshTimbre = buildSeg(el.timbreSeg,
     TIMBRES.map((t) => ({ key: t.key, name: t.label })),
     (k) => state.timbre === k,
     (item) => { state.timbre = item.key; refreshTimbre(); });
-
-  // compound presets
-  for (const c of el.compoundRow.children) {
-    c.addEventListener("click", () => {
-      state.compound = c.dataset.compound;
-      state.beatsPerMeasure = Number(c.dataset.compound);
-      state.subdivKey = "triplet";
-      renderDots();
-      refreshBeats();
-      refreshSubdiv();
-      refreshCompounds();
-    });
-  }
 
   // tempo
   el.minus.addEventListener("click", () => { resumeAudio(); setBPM(state.bpm - 1); });
@@ -430,12 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
       case "t": case "T": tapTempo(); break;
       case "m": case "M": toggleMute(); break;
       default:
-        if (/^[1-9]$/.test(e.key)) {
-          const n = Math.min(12, Number(e.key));
-          state.compound = null;
-          state.beatsPerMeasure = n;
-          renderDots(); refreshBeats(); refreshCompounds();
-        }
+        if (/^[1-9]$/.test(e.key)) setCustomBeats(Number(e.key));
     }
   });
 
@@ -446,26 +482,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setVolume(state.volume);
   }
 
-  // spotlight glow (matches homepage)
-  if (!REDUCED) {
-    document.querySelectorAll(".spotlight").forEach((card) => {
-      card.addEventListener("pointermove", (e) => {
-        const r = card.getBoundingClientRect();
-        card.style.setProperty("--mx", `${e.clientX - r.left}px`);
-        card.style.setProperty("--my", `${e.clientY - r.top}px`);
-      });
-    });
-  }
-
-  // reveal on load (single page, nothing to scroll to)
-  document.querySelectorAll(".reveal").forEach((n) => n.classList.add("in"));
-
   // initial render
   renderDots();
-  refreshBeats();
+  refreshSig();
   refreshSubdiv();
   refreshTimbre();
   syncTempoUI();
+  updateWeight();
   setVolume(Number(el.volSlider.value) / 100);
 
   // re-resume if the tab returns and the context went suspended
