@@ -1,6 +1,8 @@
-# Soraaa013 &middot; Homepage
+# Sora · Homepage
 
-纯静态个人主页，无构建步骤，直接托管在 GitHub Pages 上。
+简约风格的静态个人主页，无构建步骤，直接托管在 GitHub Pages 上。
+
+在线节拍器已经拆分到独立仓库：<https://github.com/soraaa013-ops/metronome>。
 
 ## 本地预览
 

@@ -1,147 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sora ✧ Homepage</title>
-  <meta name="description" content="Sora 的个人主页 — 音乐、数学、游戏" />
-  <meta name="theme-color" content="#07050d" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sora 的个人主页：代码、音乐与持续好奇。"><meta name="theme-color" content="#f4f1eb">
+  <title>Sora — 代码、音乐与生活</title><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="starfield" aria-hidden="true"></canvas>
-  <div class="aurora" aria-hidden="true"></div>
-  <div class="grid-overlay" aria-hidden="true"></div>
-  <div class="scroll-progress" id="progress" aria-hidden="true"></div>
-
-  <header class="nav" id="nav">
-    <a class="logo" href="#top">
-      <span class="logo-mark">✦</span>SORA
-    </a>
-    <nav id="navlinks">
-      <a href="#about">关于</a>
-      <a href="#hobbies">爱好</a>
-      <a href="#music">音乐</a>
-      <a href="metronome/">节拍器</a>
-      <a href="#contact">联系</a>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-text">
-        <p class="eyebrow"><span class="pulse"></span>HELLO, WORLD</p>
-        <h1>我是 <span class="neon" data-text="Sora">Sora</span></h1>
-        <p class="subtitle">
-          一个在华为搬砖的社畜，下班后的时间交给
-          <span class="typed" id="typed"></span><span class="caret" aria-hidden="true"></span>
-        </p>
-        <div class="cta">
-          <a class="btn primary" href="https://github.com/soraaa013-ops" target="_blank" rel="noopener">
-            <span>GitHub</span>
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          </a>
-          <a class="btn ghost" href="#music">看看音乐角落 ♪</a>
-        </div>
-      </div>
-      <div class="hero-art">
-        <div class="halo"></div>
-        <img src="assets/sora-avatar.jpg" alt="Sora 的头像" width="400" height="400" />
-      </div>
+  <a class="skip-link" href="#content">跳到正文</a>
+  <header class="site-header"><a class="wordmark" href="#top" aria-label="返回顶部">Sora<span>.</span></a><nav aria-label="主导航"><a href="#about">关于</a><a href="#work">作品</a><a href="#contact">联系</a></nav></header>
+  <main id="content">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow">你好，我是 Sora</p><h1 id="hero-title">在代码与音乐之间，<br>做点<span>认真又有趣</span>的事。</h1><p class="intro">白天写代码，晚上弹琴、研究数学和游戏。这里收着我的小作品，也记录那些让我保持好奇的东西。</p><div class="actions"><a class="button primary" href="#work">看看作品 <span aria-hidden="true">↓</span></a><a class="button text" href="https://github.com/soraaa013-ops" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
+      <figure class="portrait"><img src="assets/sora-avatar.jpg" alt="Sora 的头像" width="400" height="400"><figcaption>Shenzhen · China</figcaption></figure>
     </section>
-
-    <section id="about" class="section reveal">
-      <h2><span class="h2-num">01</span>关于我</h2>
-      <div class="card spotlight">
-        <p class="lead">你好，我是 Sora。</p>
-        <p>
-          工作日是华为的一名搬砖人，业余时间被音乐、数学和游戏填满。
-          喜欢在耳机里循环一首歌，把一道数学题慢慢啃下去；也喜欢在游戏里琢磨那些
-          精妙的机制设计。日子大多平实，但总能在这些小事里找到乐趣。
-        </p>
-        <ul class="tags">
-          <li>🎵 音乐</li>
-          <li>🧮 数学</li>
-          <li>🎮 游戏</li>
-          <li>💼 华为搬砖</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="hobbies" class="section reveal">
-      <h2><span class="h2-num">02</span>爱好</h2>
-      <div class="grid">
-        <article class="project spotlight">
-          <div class="project-icon">🎵</div>
-          <h3>音乐</h3>
-          <p>耳机不离身，喜欢在旋律里找一片安静。一首好歌能撑过一整个加班的夜晚。</p>
-        </article>
-        <article class="project spotlight">
-          <div class="project-icon">🧮</div>
-          <h3>数学</h3>
-          <p>喜欢它的纯粹。享受那种一步步推导、最后豁然开朗的瞬间。</p>
-        </article>
-        <article class="project spotlight">
-          <div class="project-icon">🎮</div>
-          <h3>游戏</h3>
-          <p>玩，也研究。喜欢拆解设计者藏在地图和数值里的那点小心思。</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="music" class="section reveal">
-      <h2><span class="h2-num">03</span>音乐角落</h2>
-      <figure class="card music-card">
-        <div class="music-art">
-          <img src="assets/bocchi.jpg" alt="《孤独摇滚！》后藤一里（波奇酱）" width="596" height="335" loading="lazy" />
-          <span class="scan" aria-hidden="true"></span>
-        </div>
-        <figcaption class="music-caption">
-          <span class="music-badge">
-            <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-            NOW PLAYING
-          </span>
-          <h3>波奇酱 · 后藤一里</h3>
-          <p>
-            一个抱着吉他、在社恐和舞台之间反复横跳的女孩。
-            喜欢她的理由大概和喜欢音乐一样 —— 安静，但一旦响起来就很用力。
-          </p>
-          <p class="music-quote">「今天也要好好弹吉他。」</p>
-        </figcaption>
-      </figure>
-    </section>
-
-    <section id="tools" class="section reveal">
-      <h2><span class="h2-num">04</span>小工具</h2>
-      <div class="grid">
-        <a class="project spotlight" href="metronome/">
-          <div class="project-icon">🎚️</div>
-          <h3>在线节拍器</h3>
-          <p>精确到毫秒的网页节拍器：变速、拍号、每拍音符、重音、打拍定速，随手一开就能用。</p>
-          <span class="btn ghost">打开 →</span>
-        </a>
-      </div>
-    </section>
-
-    <section id="contact" class="section reveal">
-      <h2><span class="h2-num">05</span>联系</h2>
-      <div class="card contact-card spotlight">
-        <p>想聊聊音乐、数学、游戏，或者只是打个招呼？欢迎来找我～ ♡</p>
-        <a class="btn primary" href="mailto:soraaa013@gmail.com">✉ soraaa013@gmail.com</a>
-      </div>
-    </section>
+    <section class="section about" id="about" aria-labelledby="about-title"><p class="section-index">01 / ABOUT</p><div><h2 id="about-title">普通生活，长期好奇。</h2><div class="about-copy"><p>工作日是华为的一名工程师。下班后，我把时间交给吉他、数学、游戏和一点自己的代码。</p><p>我喜欢把复杂的东西慢慢拆开，也喜欢把工具做得简单、安静、真正好用。</p></div><ul class="interests" aria-label="兴趣"><li>Music</li><li>Mathematics</li><li>Games</li><li>Building</li></ul></div></section>
+    <section class="section" id="work" aria-labelledby="work-title"><p class="section-index">02 / SELECTED WORK</p><div><h2 id="work-title">最近在做</h2><a class="project" href="https://soraaa013-ops.github.io/metronome/" target="_blank" rel="noopener noreferrer"><div class="project-number">01</div><div class="project-body"><div class="project-heading"><h3>在线节拍器</h3><span aria-hidden="true">↗</span></div><p>为练琴设计的网页节拍器。支持拍号、细分节奏、重音、音色和 Tap Tempo。</p><ul class="project-meta" aria-label="项目技术与类型"><li>Web Audio</li><li>Vanilla JS</li><li>Tool</li></ul></div></a><p class="project-note">节拍器是独立项目，此处仅保留入口。</p></div></section>
+    <section class="section music" aria-labelledby="music-title"><p class="section-index">03 / OFF SCREEN</p><div><h2 id="music-title">屏幕之外</h2><div class="music-card"><img src="assets/bocchi.jpg" alt="《孤独摇滚！》后藤一里" width="596" height="335" loading="lazy"><div><p class="eyebrow">NOW PLAYING</p><h3>吉他，和一点孤独摇滚</h3><p>安静并不意味着没有声音。喜欢抱着吉他，在一次次不完美的练习里找到自己的节奏。</p></div></div></div></section>
+    <section class="section contact" id="contact" aria-labelledby="contact-title"><p class="section-index">04 / CONTACT</p><div><h2 id="contact-title">来聊点有意思的。</h2><p>音乐、数学、游戏，或正在做的小项目，都欢迎。</p><a class="email" href="mailto:soraaa013@gmail.com">soraaa013@gmail.com <span aria-hidden="true">↗</span></a></div></section>
   </main>
-
-  <footer>
-    <p>© <span id="year"></span> Sora · Made with ♡ &amp; ✨ · Powered by GitHub Pages</p>
-  </footer>
-
-  <button class="to-top" id="toTop" aria-label="回到顶部" hidden>↑</button>
-
-  <script src="script.js"></script>
-</body>
-</html>
+  <footer><span>© <span id="year"></span> Sora</span><span>保持好奇，慢慢来。</span></footer><script src="script.js"></script>
+</body></html>
