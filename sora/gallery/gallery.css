@@ -196,3 +196,20 @@ dialog button {
     padding: 6px 10px;
   }
 }
+
+.work.sheet img,
+.cover img {
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: white;
+}
+
+.archive-title {
+  font: 600 clamp(28px, 5vw, 56px) / 1.2 system-ui, sans-serif;
+  letter-spacing: normal;
+  margin: 24px 0 12px;
+}
+
+#caption {
+  padding: 0 4px;
+}

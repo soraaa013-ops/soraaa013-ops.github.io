@@ -10,7 +10,7 @@ function show(index) {
   document.querySelector("#large").src = item.src;
   document.querySelector("#large").alt = item.title;
   document.querySelector("#caption").textContent =
-    item.title + " · " + item.style;
+    [item.title, item.style, item.note].filter(Boolean).join(" · ");
   if (!dialog.open) dialog.showModal();
 }
 
@@ -24,6 +24,7 @@ function filter(style) {
       const button = document.createElement("button");
       button.className = "work";
       const image = document.createElement("img");
+      if (!item.src.startsWith("art/")) button.classList.add("sheet");
       image.src = item.thumb;
       image.loading = "lazy";
       image.alt = "";

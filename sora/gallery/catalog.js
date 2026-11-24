@@ -1,352 +1,239 @@
 const catalog = [
   {
-    "number": "01",
-    "title": "初见",
-    "style": "动画设定",
-    "src": "art/01-first-light.webp",
-    "thumb": "thumbs/01-first-light.webp"
+    "number": "C01",
+    "title": "休息日的叠穿",
+    "style": "漫画线稿",
+    "src": "collection/01-weekend-layers.webp",
+    "thumb": "thumbs/collection-01-weekend-layers.webp",
+    "note": "服装平铺，搭配小幅全身穿着示意。"
   },
   {
-    "number": "02",
-    "title": "正面全身",
-    "style": "动画设定",
-    "src": "art/02-front.webp",
-    "thumb": "thumbs/02-front.webp"
+    "number": "C02",
+    "title": "侧编发的走向",
+    "style": "漫画线稿",
+    "src": "collection/02-side-braid.webp",
+    "thumb": "thumbs/collection-02-side-braid.webp",
+    "note": "沿斜线看发束如何汇入侧辫。"
   },
   {
-    "number": "03",
-    "title": "左侧剪影",
-    "style": "动画设定",
-    "src": "art/03-profile.webp",
-    "thumb": "thumbs/03-profile.webp"
+    "number": "C03",
+    "title": "雨衣跨步",
+    "style": "漫画线稿",
+    "src": "collection/03-rain-stride.webp",
+    "thumb": "thumbs/collection-03-rain-stride.webp",
+    "note": "横向观察步幅与雨衣下摆。"
   },
   {
-    "number": "04",
-    "title": "背影与长马尾",
-    "style": "动画设定",
-    "src": "art/04-back.webp",
-    "thumb": "thumbs/04-back.webp"
+    "number": "C04",
+    "title": "俯看裙褶",
+    "style": "漫画线稿",
+    "src": "collection/04-fan-pleats.webp",
+    "thumb": "thumbs/collection-04-fan-pleats.webp",
+    "note": "从头顶看裙褶随跪姿向外展开。"
   },
   {
-    "number": "05",
-    "title": "回身",
-    "style": "动画设定",
-    "src": "art/05-turn.webp",
-    "thumb": "thumbs/05-turn.webp"
+    "number": "C05",
+    "title": "骑行防风外套",
+    "style": "漫画线稿",
+    "src": "collection/05-cycle-shell.webp",
+    "thumb": "thumbs/collection-05-cycle-shell.webp",
+    "note": "从低处看骑行时前倾的躯干与外套轮廓。"
   },
   {
-    "number": "06",
-    "title": "右侧低眉",
-    "style": "动画设定",
-    "src": "art/06-right.webp",
-    "thumb": "thumbs/06-right.webp"
+    "number": "C06",
+    "title": "镜中的半束发",
+    "style": "漫画线稿",
+    "src": "collection/06-cardigan-mirror.webp",
+    "thumb": "thumbs/collection-06-cardigan-mirror.webp",
+    "note": "用镜内外两个方向对照半束发与针织开衫。"
   },
   {
-    "number": "07",
-    "title": "挥手问候",
-    "style": "动画设定",
-    "src": "art/07-wave.webp",
-    "thumb": "thumbs/07-wave.webp"
+    "number": "C07",
+    "title": "领口与胸针",
+    "style": "漫画线稿",
+    "src": "collection/07-brooch-seams.webp",
+    "thumb": "thumbs/collection-07-brooch-seams.webp",
+    "note": "放大领口、织物和胸针的连接方式。"
   },
   {
-    "number": "08",
-    "title": "侧耳倾听",
-    "style": "动画设定",
-    "src": "art/08-listen.webp",
-    "thumb": "thumbs/08-listen.webp"
+    "number": "C08",
+    "title": "卷起袖口",
+    "style": "漫画线稿",
+    "src": "collection/08-sleeves.webp",
+    "thumb": "thumbs/collection-08-sleeves.webp",
+    "note": "连续近景拆开翻袖、折袖的动作。"
   },
   {
-    "number": "09",
-    "title": "练习编发",
-    "style": "动画设定",
-    "src": "art/09-braid.webp",
-    "thumb": "thumbs/09-braid.webp"
+    "number": "C09",
+    "title": "斑马线上的回头",
+    "style": "漫画线稿",
+    "src": "collection/09-crossing.webp",
+    "thumb": "thumbs/collection-09-crossing.webp",
+    "note": "横穿画面的斑马线衬出转头时的发梢与衣摆。"
   },
   {
-    "number": "10",
-    "title": "窗前夜风",
-    "style": "动画设定",
-    "src": "art/10-loose.webp",
-    "thumb": "thumbs/10-loose.webp"
+    "number": "C10",
+    "title": "系好辫尾",
+    "style": "漫画线稿",
+    "src": "collection/10-tie.webp",
+    "thumb": "thumbs/collection-10-tie.webp",
+    "note": "竖排分镜随视线从肩侧落到辫尾的结。"
   },
   {
-    "number": "11",
-    "title": "图书室读谱",
-    "style": "动画设定",
-    "src": "art/11-half-up.webp",
-    "thumb": "thumbs/11-half-up.webp"
+    "number": "C11",
+    "title": "阴天的侧脸",
+    "style": "写实厚涂",
+    "src": "collection/11-overcast-profile.webp",
+    "thumb": "thumbs/collection-11-overcast-profile.webp",
+    "note": "近距离看散发和脸颊在冷光中的边缘。"
   },
   {
-    "number": "12",
-    "title": "快步赴约",
-    "style": "动画设定",
-    "src": "art/12-stride.webp",
-    "thumb": "thumbs/12-stride.webp"
+    "number": "C12",
+    "title": "雨后的倒影",
+    "style": "写实厚涂",
+    "src": "collection/12-puddle-crossing.webp",
+    "thumb": "thumbs/collection-12-puddle-crossing.webp",
+    "note": "用水面的倒影呼应远处雨衣的颜色。"
   },
   {
-    "number": "13",
-    "title": "谢幕",
-    "style": "动画设定",
-    "src": "art/13-curtsy.webp",
-    "thumb": "thumbs/13-curtsy.webp"
+    "number": "C13",
+    "title": "冬衣与门缝里的光",
+    "style": "写实厚涂",
+    "src": "collection/13-winter-threshold.webp",
+    "thumb": "thumbs/collection-13-winter-threshold.webp",
+    "note": "从身后看低发髻、冬外套和门边的轮廓光。"
   },
   {
-    "number": "14",
-    "title": "晨光下的谱架",
-    "style": "写实插画",
-    "src": "art/14-study.webp",
-    "thumb": "thumbs/14-study.webp"
+    "number": "C14",
+    "title": "果筐后的目光",
+    "style": "写实厚涂",
+    "src": "collection/14-orchard-table.webp",
+    "thumb": "thumbs/collection-14-orchard-table.webp",
+    "note": "桌前的水果占据前景，人物从后方探身。"
   },
   {
-    "number": "15",
-    "title": "校弦",
-    "style": "写实插画",
-    "src": "art/15-tuning.webp",
-    "thumb": "thumbs/15-tuning.webp"
+    "number": "C15",
+    "title": "旋梯上的外套",
+    "style": "写实厚涂",
+    "src": "collection/15-spiral-stair.webp",
+    "thumb": "thumbs/collection-15-spiral-stair.webp",
+    "note": "从楼梯井往下看，栏杆曲线引向人物。"
   },
   {
-    "number": "16",
-    "title": "指弹",
-    "style": "写实插画",
-    "src": "art/16-fingerstyle.webp",
-    "thumb": "thumbs/16-fingerstyle.webp"
+    "number": "C16",
+    "title": "横卧读到的一页",
+    "style": "写实厚涂",
+    "src": "collection/16-cushion-reader.webp",
+    "thumb": "thumbs/collection-16-cushion-reader.webp",
+    "note": "横向近景看松束的马尾在靠垫上铺开。"
   },
   {
-    "number": "17",
-    "title": "琴键",
-    "style": "写实插画",
-    "src": "art/17-ivories.webp",
-    "thumb": "thumbs/17-ivories.webp"
+    "number": "C17",
+    "title": "暮色车窗",
+    "style": "写实厚涂",
+    "src": "collection/17-glass-at-dusk.webp",
+    "thumb": "thumbs/collection-17-glass-at-dusk.webp",
+    "note": "让玻璃反光和车厢里的侧脸彼此重叠。"
   },
   {
-    "number": "18",
-    "title": "延音",
-    "style": "写实插画",
-    "src": "art/18-pedal.webp",
-    "thumb": "thumbs/18-pedal.webp"
+    "number": "C18",
+    "title": "陶轮边缘",
+    "style": "写实厚涂",
+    "src": "collection/18-pottery.webp",
+    "thumb": "thumbs/collection-18-pottery.webp",
+    "note": "从湿陶器的口沿顺着前臂看向专注的脸。"
   },
   {
-    "number": "19",
-    "title": "合奏前",
-    "style": "写实插画",
-    "src": "art/19-duet.webp",
-    "thumb": "thumbs/19-duet.webp"
+    "number": "C19",
+    "title": "看画的人",
+    "style": "写实厚涂",
+    "src": "collection/19-gallery.webp",
+    "thumb": "thumbs/collection-19-gallery.webp",
+    "note": "用双人视线交代画框外的作品。"
   },
   {
-    "number": "20",
-    "title": "雨后",
-    "style": "写实插画",
-    "src": "art/20-window.webp",
-    "thumb": "thumbs/20-window.webp"
+    "number": "C20",
+    "title": "灯下的手套",
+    "style": "写实厚涂",
+    "src": "collection/20-lantern.webp",
+    "thumb": "thumbs/collection-20-lantern.webp",
+    "note": "长椅上的纸灯从低处照亮脸和毛织物。"
   },
   {
-    "number": "21",
-    "title": "午后小憩",
-    "style": "写实插画",
-    "src": "art/21-cafe.webp",
-    "thumb": "thumbs/21-cafe.webp"
+    "number": "S01",
+    "title": "练习服比例三视图",
+    "style": "人设线稿",
+    "src": "sheets/01-turnaround.webp",
+    "thumb": "thumbs/sheet-01-turnaround.webp"
   },
   {
-    "number": "22",
-    "title": "换弦",
-    "style": "写实插画",
-    "src": "art/22-strings.webp",
-    "thumb": "thumbs/22-strings.webp"
+    "number": "S02",
+    "title": "头部转面",
+    "style": "人设线稿",
+    "src": "sheets/02-head.webp",
+    "thumb": "thumbs/sheet-02-head.webp"
   },
   {
-    "number": "23",
-    "title": "写旋律",
-    "style": "写实插画",
-    "src": "art/23-sketch.webp",
-    "thumb": "thumbs/23-sketch.webp"
+    "number": "S03",
+    "title": "倾听、喜悦与专注",
+    "style": "人设线稿",
+    "src": "sheets/03-expression.webp",
+    "thumb": "thumbs/sheet-03-expression.webp"
   },
   {
-    "number": "24",
-    "title": "独奏",
-    "style": "写实插画",
-    "src": "art/24-stage.webp",
-    "thumb": "thumbs/24-stage.webp"
+    "number": "S04",
+    "title": "高马尾与发带结构",
+    "style": "人设线稿",
+    "src": "sheets/04-hair.webp",
+    "thumb": "thumbs/sheet-04-hair.webp"
   },
   {
-    "number": "25",
-    "title": "最后一个音",
-    "style": "写实插画",
-    "src": "art/25-rest.webp",
-    "thumb": "thumbs/25-rest.webp"
+    "number": "S05",
+    "title": "衬衫、背带裙与配饰",
+    "style": "人设线稿",
+    "src": "sheets/05-costume.webp",
+    "thumb": "thumbs/sheet-05-costume.webp"
   },
   {
-    "number": "26",
-    "title": "琴边清唱",
-    "style": "漫画",
-    "src": "art/26-manga-concert-profile.webp",
-    "thumb": "thumbs/26-manga-concert-profile.webp"
+    "number": "S06",
+    "title": "挥手、捏袖与交握",
+    "style": "人设线稿",
+    "src": "sheets/06-hands.webp",
+    "thumb": "thumbs/sheet-06-hands.webp"
   },
   {
-    "number": "27",
-    "title": "侧耳调弦",
-    "style": "漫画",
-    "src": "art/27-manga-guitar-tuning.webp",
-    "thumb": "thumbs/27-manga-guitar-tuning.webp"
+    "number": "S07",
+    "title": "行走的四个关键姿势",
+    "style": "人设线稿",
+    "src": "sheets/07-gait.webp",
+    "thumb": "thumbs/sheet-07-gait.webp"
   },
   {
-    "number": "28",
-    "title": "庭院背影",
-    "style": "漫画",
-    "src": "art/28-manga-quiet-back.webp",
-    "thumb": "thumbs/28-manga-quiet-back.webp"
+    "number": "S08",
+    "title": "倾听时的坐姿",
+    "style": "人设线稿",
+    "src": "sheets/08-seated.webp",
+    "thumb": "thumbs/sheet-08-seated.webp"
   },
   {
-    "number": "29",
-    "title": "楼顶来风",
-    "style": "漫画",
-    "src": "art/29-manga-rooftop-wind.webp",
-    "thumb": "thumbs/29-manga-rooftop-wind.webp"
+    "number": "S09",
+    "title": "踮脚放书与落脚",
+    "style": "人设线稿",
+    "src": "sheets/09-reach.webp",
+    "thumb": "thumbs/sheet-09-reach.webp"
   },
   {
-    "number": "30",
-    "title": "练习手记",
-    "style": "漫画",
-    "src": "art/30-manga-practice-notes.webp",
-    "thumb": "thumbs/30-manga-practice-notes.webp"
+    "number": "S10",
+    "title": "从招呼到倾听",
+    "style": "人设线稿",
+    "src": "sheets/10-listening.webp",
+    "thumb": "thumbs/sheet-10-listening.webp"
   },
   {
-    "number": "31",
-    "title": "最后一和弦",
-    "style": "漫画",
-    "src": "art/31-manga-crescendo.webp",
-    "thumb": "thumbs/31-manga-crescendo.webp"
-  },
-  {
-    "number": "32",
-    "title": "藏不住的笑",
-    "style": "漫画",
-    "src": "art/32-manga-smiling-closeup.webp",
-    "thumb": "thumbs/32-manga-smiling-closeup.webp"
-  },
-  {
-    "number": "33",
-    "title": "雨天小跑",
-    "style": "漫画",
-    "src": "art/33-manga-rainy-walk.webp",
-    "thumb": "thumbs/33-manga-rainy-walk.webp"
-  },
-  {
-    "number": "34",
-    "title": "双辫练习",
-    "style": "漫画",
-    "src": "art/34-manga-double-braid.webp",
-    "thumb": "thumbs/34-manga-double-braid.webp"
-  },
-  {
-    "number": "35",
-    "title": "小小谢幕",
-    "style": "二头身",
-    "src": "art/35-chibi-tiny-encore.webp",
-    "thumb": "thumbs/35-chibi-tiny-encore.webp"
-  },
-  {
-    "number": "36",
-    "title": "最高的琴键",
-    "style": "二头身",
-    "src": "art/36-chibi-piano-bench.webp",
-    "thumb": "thumbs/36-chibi-piano-bench.webp"
-  },
-  {
-    "number": "37",
-    "title": "抱住吉他",
-    "style": "二头身",
-    "src": "art/37-chibi-oversized-guitar.webp",
-    "thumb": "thumbs/37-chibi-oversized-guitar.webp"
-  },
-  {
-    "number": "38",
-    "title": "踮脚取谱",
-    "style": "二头身",
-    "src": "art/38-chibi-tippy-toes.webp",
-    "thumb": "thumbs/38-chibi-tippy-toes.webp"
-  },
-  {
-    "number": "39",
-    "title": "坐在音符上",
-    "style": "二头身",
-    "src": "art/39-chibi-sitting-side.webp",
-    "thumb": "thumbs/39-chibi-sitting-side.webp"
-  },
-  {
-    "number": "40",
-    "title": "琴盒午睡",
-    "style": "二头身",
-    "src": "art/40-chibi-sleepy.webp",
-    "thumb": "thumbs/40-chibi-sleepy.webp"
-  },
-  {
-    "number": "41",
-    "title": "跃入星光",
-    "style": "二头身",
-    "src": "art/41-chibi-star-jump.webp",
-    "thumb": "thumbs/41-chibi-star-jump.webp"
-  },
-  {
-    "number": "42",
-    "title": "回头的蝴蝶结",
-    "style": "二头身",
-    "src": "art/42-chibi-ribbon-back.webp",
-    "thumb": "thumbs/42-chibi-ribbon-back.webp"
-  },
-  {
-    "number": "43",
-    "title": "晨光束发",
-    "style": "水彩",
-    "src": "art/43-watercolor-sunlit-studio.webp",
-    "thumb": "thumbs/43-watercolor-sunlit-studio.webp"
-  },
-  {
-    "number": "44",
-    "title": "蓝调时刻",
-    "style": "水彩",
-    "src": "art/44-watercolor-blue-hour.webp",
-    "thumb": "thumbs/44-watercolor-blue-hour.webp"
-  },
-  {
-    "number": "45",
-    "title": "草地排练",
-    "style": "水彩",
-    "src": "art/45-watercolor-garden-rehearsal.webp",
-    "thumb": "thumbs/45-watercolor-garden-rehearsal.webp"
-  },
-  {
-    "number": "46",
-    "title": "唱片店",
-    "style": "水彩",
-    "src": "art/46-watercolor-music-shop.webp",
-    "thumb": "thumbs/46-watercolor-music-shop.webp"
-  },
-  {
-    "number": "47",
-    "title": "清晨编发",
-    "style": "水彩",
-    "src": "art/47-watercolor-morning-braid.webp",
-    "thumb": "thumbs/47-watercolor-morning-braid.webp"
-  },
-  {
-    "number": "48",
-    "title": "转一支圆舞曲",
-    "style": "水彩",
-    "src": "art/48-watercolor-waltz.webp",
-    "thumb": "thumbs/48-watercolor-waltz.webp"
-  },
-  {
-    "number": "49",
-    "title": "侧耳倾听",
-    "style": "水彩",
-    "src": "art/49-watercolor-listening.webp",
-    "thumb": "thumbs/49-watercolor-listening.webp"
-  },
-  {
-    "number": "50",
-    "title": "琴盖里的倒影",
-    "style": "水彩",
-    "src": "art/50-watercolor-piano-reflection.webp",
-    "thumb": "thumbs/50-watercolor-piano-reflection.webp"
+    "number": "S11",
+    "title": "脸部与反应设定",
+    "style": "人设线稿",
+    "src": "sheets/11-face-reaction.webp",
+    "thumb": "thumbs/sheet-11-face-reaction.webp"
   }
 ];
