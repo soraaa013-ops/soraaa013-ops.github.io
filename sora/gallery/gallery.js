@@ -16,7 +16,9 @@ function show(index) {
 
 function filter(style) {
   selected =
-    style === "全部" ? catalog : catalog.filter((item) => item.style === style);
+    style === "全部" ? catalog : catalog
+      .filter((item) => item.style === style)
+      .sort((left, right) => left.number.localeCompare(right.number));
   for (const button of filters.children)
     button.setAttribute("aria-pressed", button.textContent === style);
   works.replaceChildren(
@@ -39,10 +41,17 @@ function filter(style) {
   );
 }
 
-for (const style of ["全部", ...new Set(catalog.map((item) => item.style))]) {
+const styles = ["全部", ...new Set(catalog.map((item) => item.style))];
+for (const style of styles) {
   const button = document.createElement("button");
   button.textContent = style;
-  button.onclick = () => filter(style);
+  button.onclick = () => {
+    const url = new URL(location.href);
+    if (style === "全部") url.searchParams.delete("style");
+    else url.searchParams.set("style", style);
+    history.replaceState(null, "", url);
+    filter(style);
+  };
   filters.append(button);
 }
 document.querySelector("#prev").onclick = () => show(current - 1);
@@ -52,4 +61,5 @@ dialog.addEventListener("keydown", (event) => {
   if (event.key === "ArrowLeft") show(current - 1);
   if (event.key === "ArrowRight") show(current + 1);
 });
-filter("全部");
+const initialStyle = new URLSearchParams(location.search).get("style");
+filter(styles.includes(initialStyle) ? initialStyle : "全部");
