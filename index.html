@@ -4,14 +4,6 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Sora 的个人主页：技术方向与洞察、模型与安全的 POC 实践，以及代码、音乐与生活。"><meta name="theme-color" content="#f4f1eb">
   <title>Sora — 代码、音乐与生活</title><link rel="stylesheet" href="styles.css">
-  <style>
-    .portrait { aspect-ratio: 1; }
-    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: none; }
-    @media (max-width: 760px) {
-      .portrait { width: 140px; height: 140px; overflow: hidden; border-radius: 50%; }
-      .portrait img { width: 140px; height: 140px; max-width: none; }
-    }
-  </style>
 </head>
 <body>
   <a class="skip-link" href="#content">跳到正文</a>
@@ -19,7 +11,13 @@
   <main id="content">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy"><p class="eyebrow">你好，我是 Sora</p><h1 id="hero-title">在代码与音乐之间，<br>做点<span>认真又有趣</span>的事。</h1><p class="intro">白天做技术洞察、研究方向，也写代码验证想法；晚上弹琴、研究数学和游戏。这里收着我的技术探索与小作品，也记录那些让我保持好奇的东西。</p><div class="actions"><a class="button primary" href="#work">看看作品 <span aria-hidden="true">↓</span></a><a class="button text" href="https://github.com/soraaa013-ops" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></div></div>
-      <figure class="portrait"><img src="assets/sora-avatar.jpg" alt="Sora 的头像" width="400" height="400"><figcaption>Shenzhen · China</figcaption></figure>
+      <figure class="portrait">
+        <iframe class="live-portrait" src="sora/live/index.html" title="Sora 的互动角色立绘"></iframe>
+        <figcaption>
+          <span>Shenzhen · China</span>
+          <a href="sora/gallery/index.html">Sora 设定画集 <span aria-hidden="true">↗</span></a>
+        </figcaption>
+      </figure>
     </section>
     <section class="section about" id="about" aria-labelledby="about-title"><p class="section-index">01 / ABOUT</p><div><h2 id="about-title">普通生活，长期好奇。</h2><div class="about-copy"><p>工作日是华为的一名工程师。下班后，我把时间交给吉他、数学、游戏和一点自己的代码。</p><p>我喜欢把复杂的东西慢慢拆开，也喜欢把工具做得简单、安静、真正好用。</p></div><ul class="interests" aria-label="兴趣"><li>Music</li><li>Mathematics</li><li>Games</li><li>Building</li></ul></div></section>
     <section class="section" id="research" aria-labelledby="research-title">

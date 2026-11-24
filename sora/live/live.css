@@ -1,0 +1,16 @@
+*{box-sizing:border-box}
+:root,body,main{margin:0;width:100%;height:100%;overflow:hidden;background:transparent}
+main{display:grid;grid-template-rows:minmax(0,1fr) auto;justify-items:center;align-items:stretch}
+.stage{position:relative;width:100%;min-height:0;touch-action:pan-y;cursor:default}
+.stage>*{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.stage canvas{opacity:0;pointer-events:none}
+.stage.ready canvas{opacity:1}
+.stage.ready img{opacity:0}
+nav{display:flex;align-items:center;justify-content:center;gap:6px;padding:2px 6px}
+button{background:rgba(252,252,255,.88);color:#364b67;border:1px solid rgba(64,88,121,.22);width:31px;height:31px;border-radius:50%;display:grid;place-items:center;cursor:pointer;touch-action:manipulation}
+button:hover,button:focus-visible{background:#deedff;border-color:#7197bc}
+button:focus-visible{outline:2px solid #3a6590;outline-offset:1px}
+button svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.play-icon,button[aria-pressed=true] .pause-icon{display:none}
+button[aria-pressed=true] .play-icon{display:inline}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}

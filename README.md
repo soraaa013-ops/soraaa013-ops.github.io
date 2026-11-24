@@ -16,3 +16,7 @@ python3 -m http.server 8000
 
 详见仓库根目录的部署说明，或直接推送到 `main` 分支后
 在 GitHub 仓库 Settings &rarr; Pages 中选择从 `main` 分支根目录发布。
+
+## Sora 动态形象
+
+首屏从 `sora/live/index.html` 加载角色，图下链接打开 `sora/gallery/index.html`。角色、动作和设定画的编辑源在 [sora-atelier](https://github.com/soraaa013-ops/sora-atelier)。更新时从该仓库同步对应的展示文件到 `sora/`，保留相对路径。
