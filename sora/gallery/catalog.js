@@ -5,7 +5,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/01-weekend-layers.webp",
     "thumb": "thumbs/collection-01-weekend-layers.webp",
-    "note": "服装平铺，搭配小幅全身穿着示意。"
+    "note": "平视正脸和穿衣轮廓，右侧并列外套、条纹衫和长裤的拆件。"
   },
   {
     "number": "C02",
@@ -13,7 +13,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/02-side-braid.webp",
     "thumb": "thumbs/collection-02-side-braid.webp",
-    "note": "沿斜线看发束如何汇入侧辫。"
+    "note": "从正后方看分区与编结，辫尾细节单独放大。"
   },
   {
     "number": "C03",
@@ -21,7 +21,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/03-rain-stride.webp",
     "thumb": "thumbs/collection-03-rain-stride.webp",
-    "note": "横向观察步幅与雨衣下摆。"
+    "note": "她侧身朝左迎雨而行，鞋尖落进积水。"
   },
   {
     "number": "C04",
@@ -29,7 +29,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/04-fan-pleats.webp",
     "thumb": "thumbs/collection-04-fan-pleats.webp",
-    "note": "从头顶看裙褶随跪姿向外展开。"
+    "note": "镜头垂直朝下，发顶的编结与铺开的裙褶一圈圈呼应。"
   },
   {
     "number": "C05",
@@ -37,7 +37,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/05-cycle-shell.webp",
     "thumb": "thumbs/collection-05-cycle-shell.webp",
-    "note": "从低处看骑行时前倾的躯干与外套轮廓。"
+    "note": "从前轮前方贴地仰视，能看到帽檐下抬起的下巴和握车把的双手。"
   },
   {
     "number": "C06",
@@ -45,7 +45,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/06-cardigan-mirror.webp",
     "thumb": "thumbs/collection-06-cardigan-mirror.webp",
-    "note": "用镜内外两个方向对照半束发与针织开衫。"
+    "note": "镜外从背后看半束发，镜中正面低头整理发束。"
   },
   {
     "number": "C07",
@@ -53,7 +53,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/07-brooch-seams.webp",
     "thumb": "thumbs/collection-07-brooch-seams.webp",
-    "note": "放大领口、织物和胸针的连接方式。"
+    "note": "只取领口与胸针，放大织物、镶边和背扣。"
   },
   {
     "number": "C08",
@@ -61,7 +61,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/08-sleeves.webp",
     "thumb": "thumbs/collection-08-sleeves.webp",
-    "note": "连续近景拆开翻袖、折袖的动作。"
+    "note": "从 Sora 自己的视角看向工作台，另一只手捏住袖边往上折。"
   },
   {
     "number": "C09",
@@ -69,7 +69,7 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/09-crossing.webp",
     "thumb": "thumbs/collection-09-crossing.webp",
-    "note": "横穿画面的斑马线衬出转头时的发梢与衣摆。"
+    "note": "镜头紧贴后脚，跟着她穿过斑马线，抓住她越过左肩回望的一瞬。"
   },
   {
     "number": "C10",
@@ -77,15 +77,15 @@ const catalog = [
     "style": "漫画线稿",
     "src": "collection/10-tie.webp",
     "thumb": "thumbs/collection-10-tie.webp",
-    "note": "竖排分镜随视线从肩侧落到辫尾的结。"
+    "note": "她俯身去系垂下的辫尾，脸随动作倒转，手指在发梢打结。"
   },
   {
     "number": "C11",
-    "title": "阴天的侧脸",
+    "title": "阴天的正面肖像",
     "style": "写实厚涂",
     "src": "collection/11-overcast-profile.webp",
     "thumb": "thumbs/collection-11-overcast-profile.webp",
-    "note": "近距离看散发和脸颊在冷光中的边缘。"
+    "note": "平视的正面近像，双眼迎向镜头，阴天的柔光落在银白发丝和鼻梁上。"
   },
   {
     "number": "C12",
@@ -93,7 +93,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/12-puddle-crossing.webp",
     "thumb": "thumbs/collection-12-puddle-crossing.webp",
-    "note": "用水面的倒影呼应远处雨衣的颜色。"
+    "note": "岸边的人物背向镜头，水面倒映雨衣和树枝。"
   },
   {
     "number": "C13",
@@ -101,7 +101,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/13-winter-threshold.webp",
     "thumb": "thumbs/collection-13-winter-threshold.webp",
-    "note": "从身后看低发髻、冬外套和门边的轮廓光。"
+    "note": "低盘发的侧影朝右上方抬起，门边的暖光勾出鼻尖和下巴。"
   },
   {
     "number": "C14",
@@ -109,7 +109,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/14-orchard-table.webp",
     "thumb": "thumbs/collection-14-orchard-table.webp",
-    "note": "桌前的水果占据前景，人物从后方探身。"
+    "note": "从果摊正前方看她低头笑起来，前额和双辫垂向桌面。"
   },
   {
     "number": "C15",
@@ -117,7 +117,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/15-spiral-stair.webp",
     "thumb": "thumbs/collection-15-spiral-stair.webp",
-    "note": "从楼梯井往下看，栏杆曲线引向人物。"
+    "note": "从旋梯井垂直向下望，她把脸仰向镜头，外套搭在手边。"
   },
   {
     "number": "C16",
@@ -125,7 +125,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/16-cushion-reader.webp",
     "thumb": "thumbs/collection-16-cushion-reader.webp",
-    "note": "横向近景看松束的马尾在靠垫上铺开。"
+    "note": "她侧卧在红靠垫上看书，两眼随头部横过画面，书页留在近处。"
   },
   {
     "number": "C17",
@@ -133,7 +133,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/17-glass-at-dusk.webp",
     "thumb": "thumbs/collection-17-glass-at-dusk.webp",
-    "note": "让玻璃反光和车厢里的侧脸彼此重叠。"
+    "note": "把脑后的编发放在右侧近景，车窗里映出朝左的侧脸。"
   },
   {
     "number": "C18",
@@ -141,7 +141,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/18-pottery.webp",
     "thumb": "thumbs/collection-18-pottery.webp",
-    "note": "从湿陶器的口沿顺着前臂看向专注的脸。"
+    "note": "把视点放在陶轮口沿下，从双手之间仰望她张口微笑的脸。"
   },
   {
     "number": "C19",
@@ -149,7 +149,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/19-gallery.webp",
     "thumb": "thumbs/collection-19-gallery.webp",
-    "note": "用双人视线交代画框外的作品。"
+    "note": "站到两位观众身后，看她们一起望向金色画框里的海岸。"
   },
   {
     "number": "C20",
@@ -157,7 +157,7 @@ const catalog = [
     "style": "写实厚涂",
     "src": "collection/20-lantern.webp",
     "thumb": "thumbs/collection-20-lantern.webp",
-    "note": "长椅上的纸灯从低处照亮脸和毛织物。"
+    "note": "俯看她闭眼低头的瞬间，手套里的提灯把暖光投向脸颊。"
   },
   {
     "number": "S01",
