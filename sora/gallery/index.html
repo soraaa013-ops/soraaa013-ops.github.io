@@ -1,43 +1,34 @@
 <!doctype html>
 <html lang="zh-CN">
-  <meta charset="utf-8" /><meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
-  />
-  <title>Sora 的设定画集</title>
-  <link rel="stylesheet" href="gallery.css" />
-  <header><a href="../../">← 主页</a><a href="archive/">早期作品归档 →</a></header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sora · 角色设定画集</title>
+  <meta name="description" content="Sora 的七组角色设定画。浏览多色木版画、剪纸拼贴、像素画、软粉彩、铅条彩绘玻璃、漫画线稿与写实厚涂。">
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <header><a href="../../">← 返回主页</a></header>
   <main>
-    <section class="cover">
-      <img
-        src="sheets/01-turnaround.webp"
-        alt="Sora 练习服正面、侧面与背面比例对照"
-      />
+    <section class="cover" aria-labelledby="title">
+      <img src="collection/61-glass.webp" alt="彩绘玻璃中的 Sora 低眼看着灯罩上的夜蛾，银发被蓝色与金色玻璃环绕">
       <div>
-        <h1>Sora<span>角色设定画集</span></h1>
-        <p>
-          银白色的马尾，清蓝的眼睛。听别人说话时，她会微微前倾。
-        </p>
-        <dl>
-          <dt>年龄</dt>
-          <dd>15 岁</dd>
-          <dt>身高</dt>
-          <dd>159 cm</dd>
-          <dt>乐器</dt>
-          <dd>吉他 · 钢琴</dd>
-        </dl>
+        <h1 id="title">Sora<span>角色设定画集</span></h1>
+        <p>七种画风，每组十张。</p>
+        <dl><dt>年龄</dt><dd>15 岁</dd><dt>身高</dt><dd>159 cm</dd></dl>
       </div>
     </section>
-    <nav id="filters" aria-label="筛选设定稿与插画"></nav>
+    <nav id="filters" aria-label="按画风筛选"></nav>
     <div id="works"></div>
   </main>
   <dialog aria-labelledby="caption">
-    <button id="close" aria-label="关闭大图">×</button><img id="large" alt="" />
+    <button id="close" aria-label="关闭大图">×</button><img id="large" alt="">
     <footer>
-      <button id="prev" aria-label="上一张">←</button><span id="caption"></span
-      ><button id="next" aria-label="下一张">→</button>
+      <button id="prev" aria-label="上一张">←</button><span id="caption"></span>
+      <button id="next" aria-label="下一张">→</button>
     </footer>
   </dialog>
   <script src="catalog.js"></script>
   <script src="gallery.js"></script>
+</body>
 </html>

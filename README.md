@@ -1,8 +1,8 @@
 # Sora · 个人主页
 
-首页和 `/sora/gallery/` 展示本轮角色设定画。编辑源位于 [sora-atelier](https://github.com/soraaa013-ops/sora-atelier)。
+首页汇总公开作品和研究项目。节拍器、黑夜君临工具和实验室主页链接到各自的 GitHub Pages，桌宠和研究项目链接到公开仓库。
 
-推送到 main 后，GitHub Actions 会从画集索引选择 `collection/` 中的作品，连同对应预览、样式和脚本发布到 GitHub Pages。旧版首页可以从提交 `018eae1` 恢复。
+`/sora/gallery/` 展示当前角色设定画，[sora-atelier](https://github.com/soraaa013-ops/sora-atelier) 保存编辑源。推送到 main 后，GitHub Actions 分别打包首页、互动立绘和画集。画集发布目录只包含索引中 `collection/` 作品及其预览。
 
 本地预览使用临时输出目录。
 

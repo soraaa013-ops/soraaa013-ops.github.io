@@ -1,4 +1,4 @@
-"""Package the current collection for GitHub Pages in a fresh directory."""
+"""Package the portfolio and current collection for GitHub Pages in a fresh directory."""
 import json
 import shutil
 import sys
@@ -24,5 +24,8 @@ for work in active:
 (gallery / "catalog.js").write_text("const catalog = " + json.dumps(active, ensure_ascii=False, indent=2) + ";\n")
 for filename in ("gallery.css", "gallery.js"):
     shutil.copyfile(source / filename, gallery / filename)
-for target in (output / "index.html", gallery / "index.html"):
-    shutil.copyfile(root / "index.html", target)
+shutil.copyfile(source / "index.html", gallery / "index.html")
+for filename in ("index.html", "styles.css", "script.js", ".nojekyll"):
+    shutil.copyfile(root / filename, output / filename)
+for folder in ("assets", "sora/live"):
+    shutil.copytree(root / folder, output / folder)
